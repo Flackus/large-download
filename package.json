@@ -1,0 +1,44 @@
+{
+  "name": "large-download",
+  "version": "0.1.0",
+  "description": "download large files",
+  "scripts": {
+    "unit": "istanbul test _mocha -- --recursive test",
+    "lint": "eslint .",
+    "test": "npm run lint && npm run unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Flackus/large-download.git"
+  },
+  "keywords": [
+    "download",
+    "large",
+    "files"
+  ],
+  "author": "Alexey Rybakov <alexrybakov@yandex.ru> (https://github.com/flackus)",
+  "contributors": [
+    "Slava Baginov <SlNPacifist@gmail.com> (https://github.com/SlNPacifist)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Flackus/large-download/issues"
+  },
+  "homepage": "https://github.com/Flackus/large-download/#readme",
+  "dependencies": {
+    "got": "6.7.1",
+    "progress": "1.1.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "chai": "^4.x",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^3.8.x",
+    "eslint-config-gemini-testing": "^2.2.x",
+    "gimme-port-as-promised": "0.1.1",
+    "istanbul": "^0.4.2",
+    "mocha": "^3.0.x",
+    "proxyquire": "^1.8.x",
+    "sinon": "^3.2.x"
+  }
+}

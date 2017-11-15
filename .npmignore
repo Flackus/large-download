@@ -1,0 +1,6 @@
+.gitignore
+.eslintignore
+.eslintrc
+.npmignore
+test
+coverage
