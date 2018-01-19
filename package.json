@@ -1,6 +1,6 @@
 {
   "name": "large-download",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "download large files",
   "scripts": {
     "unit": "istanbul test _mocha -- --recursive test",
