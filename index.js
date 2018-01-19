@@ -16,7 +16,7 @@ class LargeDownload {
      * @typedef  {Object} LargeDownloadOptions
      * @property {String} link download url
      * @property {String} destination where to write the result
-     * @property {Number} [timeout=20000] timeout in milliseconds for the download
+     * @property {Number} [timeout] timeout in milliseconds for the download
      * @property {Number} [retries=1] max retries for the whole operation
      * @property {HTTPOptions} [httpOptions]
      * @property {Function} [onRetry] will be called for each retry occured with an Error as the only argument
@@ -36,7 +36,7 @@ class LargeDownload {
 
         this.link = opts.link;
         this.destination = opts.destination;
-        this.timeout = opts.timeout || 20000;
+        this.timeout = opts.timeout;
         this.retries = opts.hasOwnProperty('retries') ? opts.retries : 1;
         this.httpOptions = Object.assign({ retries: 0 }, opts.httpOptions);
         this.onRetry = opts.onRetry;
@@ -101,12 +101,14 @@ class LargeDownload {
                 readable.on('error', e => onError(e));
                 writable.on('error', e => onError(e));
 
-                readable.on('request', req => {
-                    downloadTimer = setTimeout(() => {
-                        req.abort();
-                        onError(new Error(`Download timeout (${_this.timeout}) reached`));
-                    }, _this.timeout);
-                });
+                if (_this.timeout) {
+                    readable.on('request', req => {
+                        downloadTimer = setTimeout(() => {
+                            req.abort();
+                            onError(new Error(`Download timeout (${_this.timeout}) reached`));
+                        }, _this.timeout);
+                    });
+                }
 
                 readable.on('response', res => {
                     declaredSize = parseInt(res.headers['content-length'], 10);

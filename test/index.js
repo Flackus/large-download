@@ -68,7 +68,7 @@ describe('LargeDownload', () => {
         it('should initialize with default values', () => {
             const download = new LargeDownload(mkParams());
 
-            assert.strictEqual(download.timeout, 20000);
+            assert.isUndefined(download.timeout);
             assert.strictEqual(download.retries, 1);
             assert.deepEqual(download.httpOptions, { retries: 0 });
             assert.isUndefined(download.onRetry);
